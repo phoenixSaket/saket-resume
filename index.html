@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saket Verma</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-text: #000000;
+            --secondary-text: #555555;
+            --light-text: #888888;
+            --bg-color: #e5e5e5;
+            --paper-bg: #f9f9f9;
+            --accent: #a62c2b;
+            --accent-light: #d45a59;
+            --line-color: #dddddd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--paper-bg);
+            color: var(--secondary-text);
+            line-height: 1.6;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume-container {
+            width: 100%;
+            background-color: var(--paper-bg);
+            position: relative;
+            padding: 60px 50px 60px 30px;
+            background-image: radial-gradient(circle at top right, #ffffff, var(--paper-bg));
+        }
+
+        /* Black block aligned left */
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50px;
+            width: 15px;
+            height: 150px;
+            background-color: var(--accent);
+        }
+
+        /* Header styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            margin-left: 30px;
+            /* Space from the black bar */
+        }
+
+
+        .name-section {
+            flex: 0 0 62%;
+            max-width: 62%;
+        }
+
+        .name-section h1 {
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--primary-text);
+            line-height: 1.1;
+            letter-spacing: 2px;
+        }
+
+        .name-section h1 strong {
+            font-weight: 700;
+            display: block;
+        }
+
+        .name-section .title {
+            margin-top: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--secondary-text);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 34%;
+            /* min-width: 300px; */
+            margin-top: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: var(--primary-text);
+            border-bottom: 0.1px solid var(--light-text);
+            padding-bottom: 4px;
+        }
+
+        .contact-item .icon {
+            font-weight: 700;
+            width: 30px;
+            font-size: 15px;
+            display: inline-block;
+            text-align: center;
+            margin-right: 15px;
+        }
+
+        .contact-item a {
+            color: var(--primary-text);
+            /* text-decoration: none; */
+        }
+
+        .contact-info .space-20 {
+            width: 100%;
+        }
+
+        .contact-info .space-20 span {
+            width: 100%;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 45px;
+            margin-left: 30px;
+        }
+
+        .left-column {
+            flex: 0 0 62%;
+            max-width: 62%;
+        }
+
+        .right-column {
+            flex: 1;
+        }
+
+        /* Section Headings */
+        .section-title.left {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 18px;
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .section-title.left::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--accent);
+            margin-left: 15px;
+        }
+
+        .section-title.right {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 22px;
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .section-title.right::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--accent);
+            margin-left: 15px;
+        }
+
+        .left-column .section-title.left:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Summary Section */
+        .summary-text {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: var(--secondary-text);
+            border-left: 2px solid var(--accent);
+            padding-left: 18px;
+            text-align: justify;
+        }
+
+        /* Work Experience */
+        .job-entry {
+            margin-bottom: 24px;
+        }
+
+        .job-entry .space-between {
+            margin-bottom: 12px;
+        }
+
+        .job-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-meta {
+            font-size: 13px;
+            color: var(--secondary-text);
+            margin-bottom: 8px;
+        }
+
+        .job-meta .company {
+            color: var(--secondary-text);
+        }
+
+        .bullet-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .bullet-list li {
+            font-size: 12.5px;
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 14px;
+            color: var(--secondary-text);
+            line-height: 1.5;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 14px;
+        }
+
+        /* Projects */
+        .project-entry {
+            font-size: 12.5px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: var(--secondary-text);
+        }
+
+        .project-entry strong {
+            color: var(--primary-text);
+            margin-bottom: 16px;
+        }
+
+        .project-entry span.tech {
+            color: var(--light-text);
+            font-style: italic;
+        }
+
+        /* Profile Photo */
+        .profile-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            margin-top: -10px;
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 90% 100%, 10% 97%, 0 92%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 90% 100%, 10% 97%, 0 92%);
+        }
+
+        /* Education */
+        .edu-entry {
+            margin-bottom: 18px;
+        }
+
+        .edu-degree {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-text);
+            line-height: 1.3;
+        }
+
+        .edu-school {
+            font-size: 13px;
+            color: var(--secondary-text);
+        }
+
+        .edu-date {
+            font-size: 12px;
+            color: var(--light-text);
+            font-style: italic;
+        }
+
+        /* Skills */
+        .skills-category {
+            margin-bottom: 18px;
+        }
+
+        .skills-category-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-text);
+            margin-bottom: 8px;
+        }
+
+        .skills-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .skills-list li {
+            font-size: 12.5px;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 14px;
+            color: var(--secondary-text);
+        }
+
+        .skills-list li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 14px;
+        }
+
+        .space-20 {
+            display: flex;
+            gap: 20px;
+        }
+
+        .space-between {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .link {
+            text-decoration: underline !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="resume-container">
+        <header>
+            <div class="name-section">
+                <h1>SAKET<strong>VERMA</strong></h1>
+                <div class="title">TECHNICAL LEAD</div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="icon">M</span>
+                    <div class="space-20">
+                        <span>
+                            <a href="tel:+14847740302">+1 (484) 774-0302</a>
+                        </span>
+                        <span>
+                            <a href="tel:+918668692038">+91 (866) 869-2038</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">W</span>
+                    <div class="space-20">
+                        <span><a href="https://phoenixsaket.github.io/resume" class="link">Portfolio 1</a></span>
+                        <span><a href="https://phoenixsaket.github.io/portfolio" class="link">Portfolio 2</a></span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">In</span>
+                    <div class="space-20">
+                        <span><a class="link" href="https://linkedin.com/in/developer-saket-verma">LinkedIn</a></span>
+                        <span><a class="link" href="https://github.com/phoenixSaket">GitHub</a></span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">@</span>
+                    <span><a href="mailto:develope.saket@gmail.com">develope.saket@gmail.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>Philadelphia, PA, US</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <h2 class="section-title left">SUMMARY</h2>
+                <div class="summary-text">
+                    Strategic Technical Lead with a track record of rapid career advancement through high-impact
+                    delivery and analytical excellence. Expert in architecting scalable
+                    systems and leading cross-functional teams to solve complex technical challenges. Consistently
+                    recognized as a critical team resource for driving technical strategy and delivering
+                    high-performance solutions in healthcare sector.
+                </div>
+
+                <h2 class="section-title left">WORK EXPERIENCE</h2>
+
+                <div class="job-entry">
+                    <div class="space-between">
+                        <div class="job-title">CITIUSTECH</div>
+                        <div class="job-meta">October 2020 – Present</div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li><strong>Technical Lead (Oct 2025 – Present):</strong> Spearheading full-stack architecture
+                            for
+                            high-stakes healthcare modules. Serving as the primary technical point of contact, mentoring
+                            agile teams, and recognized with multiple client appreciations for resolving critical system
+                            bottlenecks and driving architectural excellence.</li>
+                        <li><strong>Senior Software Engineer (Oct 2023 – Sep 2025):</strong> Orchestrated the migration
+                            of legacy enterprise systems to modern frameworks, achieving significant performance gains.
+                            Leveraged deep analytical skills to optimize codebase efficiency, leading to early promotion
+                            for consistent high-quality contributions.</li>
+                        <li><strong>Software Engineer (Apr 2022 – Sep 2023):</strong> Entrusted as the Frontend Lead for
+                            Independent Blue Cross, successfully managing the transition of their ecosystem from Kony
+                            JS to Angular/Java while maintaining high development velocity.</li>
+                        <li><strong>Software Engineer Trainee (Oct 2020 – Mar 2022):</strong> Rapidly mastered
+                            enterprise workflows, collaborating on global mobile implementations and establishing a
+                            foundation for fast-tracked growth within the organization.</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="space-between">
+                        <div class="job-title">FREELANCE</div>
+                        <div class="job-meta">July 2020 – September 2020</div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>Delivered custom software solutions for various clients like ERP softwares, web
+                            applications,
+                            etc.</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="space-between">
+                        <div class="job-title">ScrollRight</div>
+                        <div class="job-meta"><span class="company">Software Engineer</span> | July 2020 – September
+                            2020
+                        </div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>Frontend development in ReactJS for Phase 1 of a dynamic web app named Cobalt, implementing
+                            dynamic pages and website additions.</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry">
+                    <div class="space-between">
+                        <div class="job-title">PlexusMD (now MedFlix)</div>
+                        <div class="job-meta"><span class="company">Intern</span> | January 2020 – June 2020</div>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>Frontend development in ReactJS for the official website, optimizing for SEO.</li>
+                        <li>Deployed a Rocketchat instance using Nginx for enterprise communications.</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-title left">PROJECTS</h2>
+                <div class="project-entry">
+                    <strong>Analyzer (Advanced Ratings and Reviews Dashboard):</strong> Full stack PWA for comparative
+                    analysis of apps from
+                    Play/App Store.<br> <span class="tech">Angular, NodeJS, SQL</span>
+                </div>
+                <div class="project-entry">
+                    <strong>Mobile Plugin Integrations (Forgerock, Medallia & Apple Wallet):</strong> Architected
+                    multifactor
+                    authentication
+                    workflows using Forgerock, Medallia for customer feedback and app ratings improvement for apps,
+                    synced dynamic ID cards to
+                    Apple Wallet.<br> <span class="tech">React Native, Capacitor,
+                        Angular, Java, Kotlin, Swift</span>
+                </div>
+                <div class="project-entry">
+                    <strong>Bill Printer Standalone App:</strong> A Point-of-Sale standalone app to print bills with
+                    custom UI, inventory, and customer management.<br> <span class="tech">Angular, SQLite</span>
+                </div>
+                <div class="project-entry">
+                    <strong>Custom ERP Standalone App:</strong> A custom Point-of-Sale standalone app to print bills
+                    with
+                    custom UI, inventory, and customer management.<br> <span class="tech">Angular, SQLite</span>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Place your image named `profile.jpg` in the same directory -->
+                <img src="profile.jpg" alt="Saket Verma" class="profile-photo">
+
+                <h2 class="section-title right">EDUCATION</h2>
+
+                <div class="edu-entry">
+                    <div class="edu-degree">Master of Computer Applications (MCA)</div>
+                    <div class="edu-school">Veermata Jijabai Technological Institute</div>
+                    <div class="edu-date">Sep 2017 - Jun 2020</div>
+                </div>
+
+                <div class="edu-entry">
+                    <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
+                    <div class="edu-school">G.H. Raisoni Institute of IT</div>
+                    <div class="edu-date">Sep 2014 - Jun 2017</div>
+                </div>
+
+                <h2 class="section-title right">SKILLS</h2>
+
+                <div class="skills-category">
+                    <div class="skills-category-title">Technical</div>
+                    <ul class="skills-list">
+                        <li>Angular (Expert)</li>
+                        <li>React, React Native, Ionic</li>
+                        <li>Node.js, Express.js, Java</li>
+                        <li>Elasticsearch, Dynatrace</li>
+                        <li>SQL, SQLite, MySQL</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <div class="skills-category-title">Professional</div>
+                    <ul class="skills-list">
+                        <li>System Architecture</li>
+                        <li>Agile & Scrum</li>
+                        <li>Problem-Solving</li>
+                        <li>Leadership & Mentoring</li>
+                        <li>Effective Communication</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <div class="skills-category-title">Design & Tools</div>
+                    <ul class="skills-list">
+                        <li>Photoshop, Adobe XD, Figma</li>
+                        <li>SEO, Nginx, KLWP, Git</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
